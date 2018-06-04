@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     @Test
-    public void shouldReturnAmountStatementForARegularMovie() {
+    public void shouldReturnAmountStatementForAChildrenMovie() {
         Customer customer = new Customer("Kartikey");
         customer.addRental(new Rental(new Movie("Salt", Movie.CHILDREN), 4));
 
@@ -17,6 +17,15 @@ public class CustomerTest {
                 "Amount owed is " + "3.0" + "\n" + "You earned " + "1" + " frequent renter points", customer.statement());
     }
 
+    @Test
+    public void shouldReturnAmountStatementForARegularMovie() {
+        Customer customer = new Customer("Kartikey");
+        customer.addRental(new Rental(new Movie("Salt", Movie.REGULAR), 2));
+
+        assertEquals("Rental record for " + "Kartikey"+ "\n" + "\t" + "Salt" + "\t"
+                + "2.0" + "\n" +
+                "Amount owed is " + "2.0" + "\n" + "You earned " + "1" + " frequent renter points", customer.statement());
+    }
 
 
 }
