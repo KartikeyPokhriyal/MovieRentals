@@ -20,12 +20,20 @@ public class CustomerTest {
     @Test
     public void shouldReturnAmountStatementForARegularMovie() {
         Customer customer = new Customer("Kartikey");
-        customer.addRental(new Rental(new Movie("Salt", Movie.REGULAR), 2));
+        customer.addRental(new Rental(new Movie("La la land", Movie.REGULAR), 2));
 
         assertEquals("Rental record for " + "Kartikey"+ "\n" + "\t" + "Salt" + "\t"
                 + "2.0" + "\n" +
                 "Amount owed is " + "2.0" + "\n" + "You earned " + "1" + " frequent renter points", customer.statement());
     }
 
+    @Test
+    public void shouldReturnAmountStatementForA_NewReleaseMovie() {
+        Customer customer = new Customer("Kartikey");
+        customer.addRental(new Rental(new Movie("Mean Girls", Movie.NEW_RELEASE), 5));
 
+        assertEquals("Rental record for " + "Kartikey"+ "\n" + "\t" + "Mean Girls" + "\t"
+                + "15.0" + "\n" +
+                "Amount owed is " + "15.0" + "\n" + "You earned " + "2" + " frequent renter points", customer.statement());
+    }
 }
