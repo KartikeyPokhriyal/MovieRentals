@@ -1,29 +1,37 @@
 package refactoring;
 
+import java.util.Objects;
+
 public class Movie {
 
-    public static final int CHILDREN = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
-
     private String title;
-    private int priceCode;
+    private MovieType movieType;
 
-    public Movie(String title, int priceCode) {
+    public Movie(String title, MovieType movieType) {
         this.title = title;
-        this.priceCode = priceCode;
+        this.movieType = movieType;
+    }
+
+    public MovieType getMovieType() {
+        return movieType;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getPriceCode() {
-        return priceCode;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movie)) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(title, movie.title) &&
+                Objects.equals(movieType, movie.movieType);
     }
 
-    public void setPriceCode(int priceCode) {
-        this.priceCode = priceCode;
-    }
+    @Override
+    public int hashCode() {
 
+        return Objects.hash(title, movieType);
+    }
 }

@@ -1,5 +1,7 @@
 package refactoring;
 
+import java.util.Objects;
+
 public class Rental {
 
     private Movie movie;
@@ -18,4 +20,18 @@ public class Rental {
         return daysRented;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Rental)) return false;
+        Rental rental = (Rental) o;
+        return daysRented == rental.daysRented &&
+                Objects.equals(movie, rental.movie);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(movie, daysRented);
+    }
 }

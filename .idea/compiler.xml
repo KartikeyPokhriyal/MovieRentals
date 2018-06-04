@@ -22,7 +22,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="refactoring" target="1.6" />
+      <module name="refactoring" target="7" />
     </bytecodeTargetLevel>
   </component>
 </project>
